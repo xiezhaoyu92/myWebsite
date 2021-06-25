@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <title>Zhaoyu Index</title>
+   <style >
+     body {
+       margin-top: 20px;
+       margin-left: 10%;
+       margin-right: 10%;
+     }
+     a {
+       color: black;
+     }
+     .name {
+       font-family: Times;
+       display: inline-block;
+       border: solid 0px;
+       position: relative;
+       font-size: 5vw;
+     }
+     .content {
+       font-family: Helvetica;
+       border: solid 0px;
+       text-align: center;
+       padding: 0 10px;
+       display: inline-block;
+       font-size: 3vw;
+     }
+     .content:hover {
+       background-color: black;
+       color: white;
+     }
+     nav {
+       display: inline-block;
+       float: right;
+     }
+     .profile {
+       border: solid 1px;
+       background-color: green;
+     }
+     #photo {
+      display: inline-block;
+     }
+     .intro {
+       display: inline-block;
+       position: relative;
+       width: 75%;
+       left: 3%;
+       border: 0px solid;
+     }
+     #email {
+       font-size: 10pt;
+       position: relative;
+       top: -10px;
+       display: inline;
+     }
+     .intro p {
+       font-family: Helvetica;
+       font-size: 2vw;
+     }
+   </style>
+   <script>
+     function init(){
+       nameBottom=document.querySelector(".name").getBoundingClientRect()['bottom'];
+       contentBottom=document.getElementById("about").getBoundingClientRect()['bottom'];
+       document.querySelector(".name").style.bottom=(nameBottom-contentBottom).toString()+"px";
+       profileBottom=document.querySelector(".profile").getBoundingClientRect()['bottom'];
+       photoBottom=document.getElementById("photo").getBoundingClientRect()['bottom'];
+       document.getElementById("photo").style.marginBottom=(photoBottom-profileBottom).toString()+"px";
+       photoBox=document.getElementById("photo").getBoundingClientRect();
+       photoMid=photoBox['top']+photoBox['height']/2;
+       intro=document.querySelector(".intro");
+       introBox=intro.getBoundingClientRect();
+       introMid=introBox['top']+introBox['height']/2;
+       intro.style.bottom=(introMid-photoMid).toString()+"px";
+     }
+     function highlight(){
+       email = document.getElementById("email");
+       email.style.color = "red";
+       email.style.backgroundColor="cyan";
+     }
+   </script>
+ </head>
+ <body onload="init();">
+   <header>
+     <a href="index.html"><h2 class="name" id="name">Zhaoyu Xie</h2></a>
+     <nav>
+       <a href=".profile"><ul class="content" id="about">About</ul></a>
+       <ul class="content" id="resume">Resume</ul>
+       <a href="#email" onclick="highlight();"><ul class="content" id="contact">Contact</ul></a>
+     </nav>
+   </header>
+   <div class="profile">
+     <img src="studentXie.jpg" alt="xie" id="photo" width=20%>
+     <div class="intro">
+       <p>Ph.D in Physics</p>
+       <p>Demonstrated research experience utilizing simulation, computation and data analysis.</p>
+       <p>C/C++, Python, Bash Shell, Mathematica</p>
+     </div>
+   </div>
+   <hr>
+   <footer>
+     <p id="email">Email: xiezhaoyu92@gmail.com</p>
+   </footer>
+ </body>
+</html>
